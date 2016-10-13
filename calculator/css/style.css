@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+#calculator {
+    width: 268px;
+    height: auto;
+    margin: 100px auto;
+    padding: 20px 20px 9px;
+    background: lightgreen;
+    border-radius: 10px;
+}
+
+.top {
+    display: block;
+}
+
+.top button.C {
+    float: right;
+    background: lightpink;
+    color: white;
+    height: 28px;
+    width: 50px;
+    border-radius: 5px;
+}
+
+#screen {
+    float: left;
+    width: 166px;
+    height: 30px;
+    background: lightcyan;
+    margin-bottom: 10px;
+}
+
+.keypad {
+    display: block;
+}
+
+.keypad,
+.top {
+    overflow: hidden;
+}
+
+.keypad button {
+    float: left;
+    position: relative;
+    top: 0;
+    cursor: pointer;
+    background: mintcream;
+    color: gray;
+    text-align: center;
+    font-size: 15px;
+    width: 50px !important;
+    height: 28px;
+    margin: 0 7px 11px 0;
+    border-radius: 5px;
+}
