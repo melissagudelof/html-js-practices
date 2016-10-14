@@ -15,7 +15,7 @@
     display: block;
 }
 
-.top button.C {
+#C {
     float: right;
     background: lightpink;
     color: white;
@@ -30,6 +30,7 @@
     height: 30px;
     background: lightcyan;
     margin-bottom: 10px;
+    text-align: right;
 }
 
 .keypad {
@@ -46,7 +47,7 @@
     position: relative;
     top: 0;
     cursor: pointer;
-    background: mintcream;
+    background: lavender;
     color: gray;
     text-align: center;
     font-size: 15px;

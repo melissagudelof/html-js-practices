@@ -2,11 +2,20 @@ const operators = ['+', '-', '*', '/'];
 const point = '.';
 var screen = document.getElementById("screen");
 
+document.getElementById("C").addEventListener("click", clearScreen);
+document.getElementById("equals").addEventListener("click", evalResult);
+var keys = document.getElementsByClassName("key");
+for (var i = 0; i < keys.length; i++) {
+    var element = keys[i];
+    element.addEventListener("click", appendKeyPressed);
+}
+
 function clearScreen() {
     screen.innerHTML = "";
 }
 
-function appendKeyPressed(key) {
+function appendKeyPressed(event) {
+    var key = event.target;
     var value = key.innerHTML;
     var screenValue = screen.innerHTML;
     //Setting new value
@@ -17,23 +26,11 @@ function appendKeyPressed(key) {
 
 function validateInput(input, screenValue) {
     var length = screenValue.length;
-    //debugger;
-    if (length == 0 && (input != "*" && input != "/")) {
-        return true;
+    if (length == 0 && (input == "*" || input == "/")) {
+        return false;
     }
     var lastChar = screenValue[length - 1];
-    //TODO fix validations - if applied separately they work
-    /*if (isOperator(lastChar) && isOperator(input)) {
-        return false;
-    } else {
-        if (isPoint(lastChar) && isPoint(input)) {
-            return false;
-        } else {
-            return true;
-        }
-    }*/
-    return (!(isOperator(lastChar) && isOperator(input)) &&
-        !(isPoint(lastChar) && isPoint(input)));
+    return validateOperator(lastChar, input) && validatePoint(lastChar, input);
 }
 
 function evalResult() {
@@ -42,9 +39,17 @@ function evalResult() {
     screen.innerHTML = result;
 }
 
+function validateOperator(lastChar, input) {
+    return !(isOperator(lastChar) && isOperator(input));
+}
+
 function isOperator(input) {
     var index = operators.indexOf(input);
     return (index != -1);
+}
+
+function validatePoint(lastChar, input) {
+    return !(isPoint(lastChar) && isPoint(input));
 }
 
 function isPoint(input) {
